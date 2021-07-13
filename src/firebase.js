@@ -2,15 +2,14 @@ import firebase from "firebase";
 import 'firebase/auth';
 import 'firebase/storage';
 import 'firebase/firestore';
-require('dotenv').config();
 
 firebase.initializeApp({
-    apiKey: process.env.API_KEY,
-    authDomain: process.env.AUTH_DOMAIN,
-    projectId: process.env.PROJECT_ID,
-    storageBucket: process.env.STORAGE_BUCKET,
-    messagingSenderId: process.env.SENDER_ID,
-    appId: process.env.APP_ID
+    apiKey: "AIzaSyBLBkx8sFoMLcc7d5Cq0VRFxJoBTh0t0kM",
+    authDomain: "reels-clone-4528d.firebaseapp.com",
+    projectId: "reels-clone-4528d",
+    storageBucket: "reels-clone-4528d.appspot.com",
+    messagingSenderId: "215838351407",
+    appId: "1:215838351407:web:e1dd3729ae93971d6aa6da"
 });
 
 const firestore = firebase.firestore();
@@ -21,4 +20,3 @@ export const database = {
     getCurrentTimeStamp: firebase.firestore.FieldValue.serverTimestamp
 };
 
-// export default firebase;

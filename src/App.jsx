@@ -1,9 +1,13 @@
 import React from 'react';
+import SignUp from './components/SignUp/SignUp';
+import AuthProvider from './context/AuthProvider';
 import './styles/App.css';
 
 function App() {
   return (
-    <h1>Hello</h1>
+    <AuthProvider>
+      <SignUp />
+    </AuthProvider>
   );
 }
 
