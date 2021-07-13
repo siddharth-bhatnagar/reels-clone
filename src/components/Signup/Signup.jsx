@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import { storage, database } from '../../firebase';
 
@@ -36,6 +36,7 @@ function Signup() {
             }
 
             function errorHandler(err) {
+                console.log(error, err);
                 setError(err);
                 setTimeout(() => setError(''), 2000);
                 setLoading(false);
@@ -69,7 +70,7 @@ function Signup() {
 
     const handleFileUpload = (e) => {
         let file = e.target.files[0];
-        
+
         if (file != null) {
             console.log(file);
             setFile(file);
