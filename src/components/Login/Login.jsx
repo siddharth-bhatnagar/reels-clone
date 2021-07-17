@@ -1,15 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 
 function Login() {
 
-    const { login, currentUser } = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const history = useHistory();
 
     const handleSubmit = async (e) => {
         console.log('handle form submission');
@@ -21,17 +19,11 @@ function Login() {
             console.log("Success");
             setLoading(false);
         } catch {
-            setError("Failed to log in");
-            setTimeout(() => setError(''), 2000);
-            setLoading(false);
+            setError("Failed to log in")
+            setTimeout(() => setError(''), 2000)
+            setLoading(false)
         }
     }
-
-    useEffect(() => {
-        if (currentUser) {
-            history.push('/');
-        }
-    }, []);
 
     return (
         <div>
@@ -46,8 +38,6 @@ function Login() {
                 </div>
                 <button type='submit' disabled={loading}>Login</button>
             </form>
-
-            {error? <p>{error}</p> : <></>}
         </div>
     );
 }
