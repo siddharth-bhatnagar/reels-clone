@@ -21,9 +21,11 @@ function AuthProvider({ children }) {
     }
 
     useEffect(() => {
+        console.log("useEffect")
         const unsubscribe = auth.onAuthStateChanged((user) => {
             setCurrentUser(user);
             setLoading(false);
+            console.log("Observer");
         });
 
         return () => {

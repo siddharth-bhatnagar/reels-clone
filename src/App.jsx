@@ -1,8 +1,15 @@
 import React from 'react';
+import Login from './components/Login/Login';
+import Signup from './components/Signup/Signup';
+import AuthProvider from './context/AuthProvider';
+import './styles/App.css';
 
 function App() {
     return (
-        <h1>Hello</h1>
+        <AuthProvider>
+            <Login />
+            {/* <Signup /> */}
+        </AuthProvider>
     );
 }
 
