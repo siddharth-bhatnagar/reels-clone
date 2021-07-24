@@ -1,21 +1,30 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import { storage, database } from '../../firebase/firebase';
 import LinkButton from '../LinkButton/LinkButton';
 import { Grid, Card, TextField, Button, CardMedia, Typography } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { Alert } from '@material-ui/lab';
 import { useStyles } from './Style';
 
 function Signup() {
 
     const classes = useStyles();
-    const { signup } = useContext(AuthContext);
+    const history = useHistory();
+    const { signup, currentUser } = useContext(AuthContext);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [file, setFile] = useState(null);
+
+    useEffect(() => {
+        if (currentUser) {
+            history.push('/');
+        }
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -42,8 +51,7 @@ function Signup() {
             }
 
             function errorHandler(err) {
-                console.log(error, err);
-                setError(err);
+                setError(err.message);
                 setTimeout(() => setError(''), 2000);
                 setLoading(false);
             }
@@ -64,10 +72,11 @@ function Signup() {
                 });
                 setLoading(false);
                 console.log("User has successfully registered!");
+                history.push('/');
             }
         }
         catch (err) {
-            setError(err);
+            setError(err.message);
             setTimeout(() => setError(''), 2000);
             setLoading(false);
         }
@@ -84,6 +93,7 @@ function Signup() {
 
     return (
         <>
+            {error ? <Alert severity="error">{error}</Alert> : <></>}
             {
                 loading ? <LoadingScreen /> :
                     <Grid container spacing={4} className={classes.mainContainer}>

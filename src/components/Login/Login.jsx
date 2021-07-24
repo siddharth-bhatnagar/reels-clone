@@ -1,20 +1,27 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useStyles } from './Style';
 import { AuthContext } from '../../context/AuthProvider';
 import { Grid, Hidden, CardMedia, Card, TextField, Button, Typography } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import Carousel from 'react-material-ui-carousel';
 import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import LinkButton from '../LinkButton/LinkButton';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
 
     const classes = useStyles();
-    const { login } = useContext(AuthContext);
-
+    const { login, currentUser } = useContext(AuthContext);
+    const history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (currentUser !== null)
+            history.push('/');
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -23,9 +30,12 @@ function Login() {
             setLoading(true);
             await login(email, password);
             console.log("Success");
+            setEmail('');
+            setPassword('');
             setLoading(false);
-        } catch {
-            setError("Failed to log in")
+            history.push('/');
+        } catch (err) {
+            setError(err.message);
             setTimeout(() => setError(''), 2000)
             setLoading(false)
         }
@@ -33,6 +43,7 @@ function Login() {
 
     return (
         <div>
+            {error ? <Alert severity="error">{error}</Alert> : <></>}
             {loading ? <LoadingScreen /> :
                 <Grid container spacing={4} className={classes.mainContainer}>
                     <Hidden xsDown smDown mdDown>
