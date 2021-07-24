@@ -11,35 +11,27 @@ export const useStyles = makeStyles({
         margin: "auto",
         backgroundColor: "rgba(var(--b3f,250,250,250),1)"
     },
-    leftMediaDiv: {
-        position: "relative",
-    },
-    leftMediaContainer: {
-        height: "618px",
-        width: "454px",
-        display: "flex"
-    },
-    carousel: {
-        position: "relative",
-        left: "150.5px"
-    },
-    carouselImage: {
-        height: "427px",
-        width: "240px",
-        position: "relative",
-        top: "100px",
-        padding: 0,
-        zIndex: "3"
-    },
     card: {
-        height: "15rem",
+        height: "20rem",
         width: "15rem",
-        margin: "0.5rem"
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        padding: "1rem",
     },
     cardLogo: {
         height: "100px",
         width: "250px",
         margin: "auto"
+    },
+    cardText: {
+        color: "#8E8E8E",
+        fontSize: "17px",
+        fontWeight: "600",
+        lineHeight: "20px",
+        textAlign: "center",
+        margin: "0 40px 10px"
     },
     textField: {
         "& input::placeholder": {
@@ -61,5 +53,11 @@ export const useStyles = makeStyles({
         height: "35px",
         textTransform: "none",
         fontSize: "16px"
+    },
+    textElement: {
+        color: "#262626",
+        marginTop: "1rem",
+        fontSize: "16px",
+        margin: "auto"
     }
 });
