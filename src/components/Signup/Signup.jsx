@@ -1,9 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
-import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import { storage, database } from '../../firebase/firebase';
 import LinkButton from '../LinkButton/LinkButton';
-import { Grid, Card, TextField, Button, CardMedia, Typography } from '@material-ui/core';
+import { Grid, Card, TextField, Button, CardMedia, Typography, LinearProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { Alert } from '@material-ui/lab';
 import { useStyles } from './Style';
@@ -92,109 +91,111 @@ function Signup() {
     }
 
     return (
-        <>
+        <>  
+            {loading ? <LinearProgress /> : <></>}
             {error ? <Alert severity="error">{error}</Alert> : <></>}
-            {
-                loading ? <LoadingScreen /> :
-                    <Grid container spacing={4} className={classes.mainContainer}>
-                        <Grid item xs={12} sm={12} md={12} lg={12}>
-                            <div style={{ position: "relative" }}>
-                                <Card variant="outlined" className={classes.card}>
-                                    <CardMedia
-                                        image="https://www.logo.wine/a/logo/Instagram/Instagram-Wordmark-Black-Logo.wine.svg"
-                                        className={classes.cardLogo}
+            <Grid container spacing={4} className={classes.mainContainer}>
+                <Grid item xs={12} sm={12} md={12} lg={12}>
+
+                    <div style={{ position: "relative" }}>
+                        <Card variant="outlined" className={classes.card}>
+
+                            <CardMedia
+                                image="https://www.logo.wine/a/logo/Instagram/Instagram-Wordmark-Black-Logo.wine.svg"
+                                className={classes.cardLogo}
+                            />
+                            <Grid container spacing={3}>
+                                <Typography
+                                    className={classes.cardText}
+                                    variant="h6"
+                                    size="small"
+                                    gutterBottom
+                                >
+                                    Sign up to see photos and videos from your friends.
+                                </Typography>
+                                <form>
+
+                                    <TextField
+                                        InputLabelProps={{ style: { fontSize: 18 } }}
+                                        inputProps={{ style: { fontSize: 18 } }}
+                                        fullWidth={true}
+                                        className={classes.textField}
+                                        variant="outlined" size="small"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        type="text"
+                                        label="Name"
+                                        placeholder="John Doe"
                                     />
-                                    <Grid container spacing={3}>
-                                        <Typography
-                                            className={classes.cardText}
-                                            variant="h6"
-                                            size="small"
-                                            gutterBottom
-                                        >
-                                            Sign up to see photos and videos from your friends.
-                                        </Typography>
-                                        <form>
 
-                                            <TextField
-                                                InputLabelProps={{ style: { fontSize: 18 } }}
-                                                inputProps={{ style: { fontSize: 18 } }}
-                                                fullWidth={true}
-                                                className={classes.textField}
-                                                variant="outlined" size="small"
-                                                value={name}
-                                                onChange={(e) => setName(e.target.value)}
-                                                type="text"
-                                                label="Name"
-                                                placeholder="John Doe"
-                                            />
+                                    <TextField
+                                        InputLabelProps={{ style: { fontSize: 18 } }}
+                                        inputProps={{ style: { fontSize: 18 } }}
+                                        fullWidth={true}
+                                        className={classes.textField}
+                                        variant="outlined" size="small"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        type="email"
+                                        label="Email"
+                                        placeholder="johndoe@example.com"
+                                    />
 
-                                            <TextField
-                                                InputLabelProps={{ style: { fontSize: 18 } }}
-                                                inputProps={{ style: { fontSize: 18 } }}
-                                                fullWidth={true}
-                                                className={classes.textField}
-                                                variant="outlined" size="small"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                type="email"
-                                                label="Email"
-                                                placeholder="johndoe@example.com"
-                                            />
+                                    <TextField
+                                        InputLabelProps={{ style: { fontSize: 18 } }}
+                                        inputProps={{ style: { fontSize: 18 } }}
+                                        fullWidth={true}
+                                        className={classes.textField}
+                                        variant="outlined"
+                                        size="small"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        type="password"
+                                        label="Password"
+                                    />
 
-                                            <TextField
-                                                InputLabelProps={{ style: { fontSize: 18 } }}
-                                                inputProps={{ style: { fontSize: 18 } }}
-                                                fullWidth={true}
-                                                className={classes.textField}
-                                                variant="outlined"
-                                                size="small"
-                                                value={password}
-                                                onChange={(e) => setPassword(e.target.value)}
-                                                type="password"
-                                                label="Password"
-                                            />
+                                    <Button
+                                        variant="contained"
+                                        size="small"
+                                        onChange={handleFileUpload}
+                                        className={classes.btn}
+                                        style={{ backgroundColor: "#DC004E", color: "#fff" }}
+                                    >
+                                        Profile Image
+                                        <TextField
+                                            type="file"
+                                            style={{ opacity: "0", position: "absolute", width: "100%", height: "100%" }}>
+                                        </TextField>
+                                    </Button>
 
-                                            <Button
-                                                variant="contained"
-                                                size="small"
-                                                onChange={handleFileUpload}
-                                                className={classes.btn}
-                                                style={{ backgroundColor: "#DC004E", color: "#fff" }}
-                                            >
-                                                Profile Image
-                                                <TextField
-                                                    type="file"
-                                                    style={{ opacity: "0", position: "absolute", width: "100%", height: "100%" }}>
-                                                </TextField>
-                                            </Button>
+                                    <Button
+                                        className={classes.btn}
+                                        disabled={loading}
+                                        color="primary"
+                                        size="small"
+                                        variant="contained"
+                                        onClick={handleSubmit}
+                                    >
+                                        Sign Up
+                                    </Button>
+                                </form>
 
-                                            <Button
-                                                className={classes.btn}
-                                                disabled={loading}
-                                                color="primary"
-                                                size="small"
-                                                variant="contained"
-                                                onClick={handleSubmit}
-                                            >
-                                                Sign Up
-                                            </Button>
-                                        </form>
+                                <Typography
+                                    className={classes.textElement}
+                                    variant="body1"
+                                    gutterBottom
+                                    size="small"
+                                >
+                                    Have an account?
+                                    <LinkButton content=" Log In" routeLink="/login" />
+                                </Typography>
+                            </Grid>
 
-                                        <Typography
-                                            className={classes.textElement}
-                                            variant="body1"
-                                            gutterBottom
-                                            size="small"
-                                        >
-                                            Have an account?
-                                            <LinkButton content=" Log In" routeLink="/login" />
-                                        </Typography>
-                                    </Grid>
-                                </Card>
-                            </div>
-                        </Grid>
-                    </Grid>
-            }
+                        </Card>
+                    </div>
+                </Grid>
+            </Grid>
+
         </>
     );
 }
