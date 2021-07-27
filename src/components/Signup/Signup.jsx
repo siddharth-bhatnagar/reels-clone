@@ -30,18 +30,17 @@ function Signup() {
         try {
             setLoading(true);
             let res = await signup(email, password);
+            console.log(res);
             let uid = res.user.uid;
             console.log(uid);
 
             // Creates user/uid directories and stores file with profileImage name
             const uploadTaskListener = storage.ref(`/users/${uid}/profileImage`).put(file);
             // Register three observers:
-            // 1. 'state_changed' observer, called any time the state changes
-            // 2. Error observer, called on failure
-            // 3. Completion observer, called on successful completion
-            // fn1 -> progress tracking
-            // fn2 -> error
-            // fn3 -> success
+            // 1. 'state_changed' observer, called any time the state changes -- tracks progress
+            // 2. Error observer, called on failure -- error handler
+            // 3. Completion observer, called on successful completion -- task completion
+
             uploadTaskListener.on('state_changed', progressTracker, errorHandler, taskSuccessful);
 
             function progressTracker(snapshot) {
@@ -56,19 +55,22 @@ function Signup() {
             }
 
             async function taskSuccessful() {
+                // link of profile picture just stored
                 let downloadURL = await uploadTaskListener.snapshot.ref.getDownloadURL();
                 console.log(downloadURL);
+
                 // users -- collection name
                 // uid -- document name
                 // object -- information stored by the document
-                await database.users.doc(uid).set({
+                const userObject = {
                     email: email,
                     userID: uid,
                     username: name,
                     createdAt: database.getCurrentTimeStamp(),
                     profileURL: downloadURL,
                     postIDS: []
-                });
+                }
+                await database.users.doc(uid).set(userObject);
                 setLoading(false);
                 console.log("User has successfully registered!");
                 history.push('/');
@@ -91,7 +93,7 @@ function Signup() {
     }
 
     return (
-        <>  
+        <>
             {loading ? <LinearProgress /> : <></>}
             {error ? <Alert severity="error">{error}</Alert> : <></>}
             <Grid container spacing={4} className={classes.mainContainer}>

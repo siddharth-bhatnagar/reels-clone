@@ -10,6 +10,6 @@ export const useStyles = makeStyles({
         flexDirection: "column"
     },
     uploadBtn: {
-        marginTop: "8%"
+        marginTop: "120px"
     }
 });

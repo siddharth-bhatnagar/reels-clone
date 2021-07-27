@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
-import { AppBar, Toolbar, Container, IconButton, Avatar, Menu, MenuItem, Fade } from '@material-ui/core';
+import { AppBar, Toolbar, Container, IconButton, Avatar, Menu, MenuItem, Fade, Hidden, LinearProgress } from '@material-ui/core';
 import { Home, ExploreOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import { useStyles } from './Style';
 
-function Header({ user }) {
+function Header({ loading, setLoading, user }) {
     const classes = useStyles();
     const { logout } = useContext(AuthContext);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -21,21 +21,24 @@ function Header({ user }) {
 
     const handleSignout = async (e) => {
         try {
-            // setLoading(true);
+            setLoading(true);
             await logout();
-            // setLoading(false);
+            setLoading(false);
         }
         catch (err) {
             console.log(err.message);
-            // setLoading(false);
+            setLoading(false);
         }
     }
 
     return (
         <>
             <AppBar className={classes.appBar} position="fixed">
+                {loading ? <LinearProgress color="secondary" /> : <></>}
                 <Toolbar className={classes.toolBar}>
-                    <img height="100%" width="200vw" src="https://www.logo.wine/a/logo/Instagram/Instagram-Wordmark-Black-Logo.wine.svg" alt="" />
+                    <Hidden xsDown>
+                        <img height="100%" width="200vw" src="https://www.logo.wine/a/logo/Instagram/Instagram-Wordmark-Black-Logo.wine.svg" alt="" />
+                    </Hidden>
                     <Container className={classes.iconsContainer}>
                         <IconButton className={classes.iconBtn}>
                             <Link to='/' style={{ textDecoration: "none", color: "inherit" }}>

@@ -2,9 +2,9 @@ import { makeStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles({
     appBar: {
-        height: "3rem",
+        height: "4rem",
         display: "flex",
-        backgroundColor: "white"
+        backgroundColor: "white",
     },
     toolBar: {
         display: "flex",

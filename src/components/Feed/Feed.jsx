@@ -10,14 +10,14 @@ import { useStyles } from './Style';
 function Feed() {
     const classes = useStyles();
     const { currentUser } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
     const [userData, setUserData] = useState();
 
     useEffect(() => {
+        // Attaching a listener on the current user's document in DB
+        // Whenever there is change/update, callback is fired and it updates userdata state
         const unsubscribe = database.users.doc(currentUser.uid).onSnapshot((doc) => {
             setUserData(doc.data());
-            return () => {
-                unsubscribe();
-            }
         });
     }, [currentUser]);
 
@@ -26,10 +26,10 @@ function Feed() {
             {
                 userData == null ? <LoadingScreen /> :
                     <>
-                        <Header user={userData} />
+                        <Header loading={loading} setLoading={setLoading} user={userData} />
                         <Container className={classes.feedContainer}>
                             <div className={classes.uploadBtn}>
-                                <UploadVideo user={userData} />
+                                <UploadVideo loading={loading} setLoading={setLoading} user={userData} />
                             </div>
                         </Container>
                     </>

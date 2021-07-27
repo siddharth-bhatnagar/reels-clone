@@ -21,6 +21,9 @@ function AuthProvider({ children }) {
     }
 
     useEffect(() => {
+        // Attaching observer on auth object, provided by firebase
+        // The callback will always run on mounting + whenever any change observed in auth obj
+        // onAuthStateChanged also returns a cleanup function
         const unsubscribe = auth.onAuthStateChanged((user) => {
             setCurrentUser(user);
             setLoading(false);
