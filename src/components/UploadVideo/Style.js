@@ -10,6 +10,6 @@ export const useStyles = makeStyles({
     },
     icon: {
         marginRight: "10px",
-        color: "#E1306C"  /* Chrome 10-25, Safari 5.1-6 */
+        color: "#E1306C" 
     }
 });

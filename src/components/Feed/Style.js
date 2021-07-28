@@ -10,6 +10,11 @@ export const useStyles = makeStyles({
         flexDirection: "column"
     },
     uploadBtn: {
-        marginTop: "120px"
+        marginTop: "120px",
+        marginBottom: "20px"
+    },
+    postsContainer: {
+        height: "calc(100vh - 185px)",
+        width: "100%",
     }
 });

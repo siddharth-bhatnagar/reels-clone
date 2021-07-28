@@ -6,6 +6,7 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import UploadVideo from '../UploadVideo/UploadVideo';
 import { Container } from '@material-ui/core';
 import { useStyles } from './Style';
+import Posts from '../Posts/Posts';
 
 function Feed() {
     const classes = useStyles();
@@ -18,6 +19,7 @@ function Feed() {
         // Whenever there is change/update, callback is fired and it updates userdata state
         const unsubscribe = database.users.doc(currentUser.uid).onSnapshot((doc) => {
             setUserData(doc.data());
+            return unsubscribe;
         });
     }, [currentUser]);
 
@@ -30,6 +32,9 @@ function Feed() {
                         <Container className={classes.feedContainer}>
                             <div className={classes.uploadBtn}>
                                 <UploadVideo loading={loading} setLoading={setLoading} user={userData} />
+                            </div>
+                            <div className={classes.postsContainer}>
+                                <Posts user={userData} />
                             </div>
                         </Container>
                     </>
