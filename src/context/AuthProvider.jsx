@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { auth } from '../firebase';
+import { auth } from '../firebase/firebase';
 
 export const AuthContext = React.createContext();
 
@@ -21,6 +21,9 @@ function AuthProvider({ children }) {
     }
 
     useEffect(() => {
+        // Attaching observer on auth object, provided by firebase
+        // The callback will always run on mounting + whenever any change observed in auth obj
+        // onAuthStateChanged also returns a cleanup function
         const unsubscribe = auth.onAuthStateChanged((user) => {
             setCurrentUser(user);
             setLoading(false);
@@ -32,14 +35,14 @@ function AuthProvider({ children }) {
     }, []);
 
     const contextObject = {
-        currentUser,
-        login,
+        currentUser, 
+        login, 
         signup,
         logout
     }
 
     return (
-        <AuthContext.Provider value={contextObject}>
+        <AuthContext.Provider value={contextObject} >
             {!loading && children}
         </AuthContext.Provider>
     );
