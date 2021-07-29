@@ -49,4 +49,9 @@ export const useStyles = makeStyles({
         opacity: "0",
         zIndex: "2",
     },
+    circularLoader: {
+        position: "relative",
+        top: "50%",
+        left: "50%"
+    }
 })
