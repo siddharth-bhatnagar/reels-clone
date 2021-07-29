@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles((theme)=> ({
     feedContainer: {
         height: "calc(100% - 4rem)",
         width: "100%",
@@ -16,5 +16,5 @@ export const useStyles = makeStyles({
     postsContainer: {
         height: "calc(100vh - 185px)",
         width: "100%",
-    }
-});
+    },
+}));

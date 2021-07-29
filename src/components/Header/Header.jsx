@@ -65,7 +65,7 @@ function Header({ loading, setLoading, user }) {
                             transformOrigin={{ vertical: "top", horizontal: "center" }}
                         >
                             <MenuItem>
-                                <Link to="/" style={{ padding: "0", textDecoration: "none", color: "inherit" }}>
+                                <Link to="/profile" style={{ padding: "0", textDecoration: "none", color: "inherit" }}>
                                     Profile
                                 </Link>
                             </MenuItem>

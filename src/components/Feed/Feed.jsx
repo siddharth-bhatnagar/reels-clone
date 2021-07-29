@@ -19,9 +19,11 @@ function Feed() {
         // Whenever there is change/update, callback is fired and it updates userdata state
         const unsubscribe = database.users.doc(currentUser.uid).onSnapshot((doc) => {
             setUserData(doc.data());
-            return unsubscribe;
         });
+        return unsubscribe;
     }, [currentUser]);
+
+    
 
     return (
         <>

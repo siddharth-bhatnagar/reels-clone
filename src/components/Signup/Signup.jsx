@@ -15,6 +15,7 @@ function Signup() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [bio, setBio] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [file, setFile] = useState(null);
@@ -68,6 +69,7 @@ function Signup() {
                     username: name,
                     createdAt: database.getCurrentTimeStamp(),
                     profileURL: downloadURL,
+                    bio: bio,
                     postIDS: []
                 }
                 await database.users.doc(uid).set(userObject);
@@ -154,6 +156,19 @@ function Signup() {
                                         onChange={(e) => setPassword(e.target.value)}
                                         type="password"
                                         label="Password"
+                                    />
+
+                                    <TextField
+                                        InputLabelProps={{ style: { fontSize: 18 } }}
+                                        inputProps={{ style: { fontSize: 18 } }}
+                                        fullWidth={true}
+                                        className={classes.textField}
+                                        variant="outlined"
+                                        size="small"
+                                        value={bio}
+                                        onChange={(e) => setBio(e.target.value)}
+                                        type="text"
+                                        label="Bio"
                                     />
 
                                     <Button

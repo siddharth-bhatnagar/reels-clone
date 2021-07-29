@@ -29,6 +29,7 @@ function Video(props) {
                 controls
                 muted='muted'
                 type='video/mp4'
+                autoPlay
             >
                 <source
                     src={props.source}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '@material-ui/core';
+import { Button, TextField, Modal, Backdrop, Fade } from '@material-ui/core';
 import { useStyles } from './Style';
 import { Alert } from '@material-ui/lab';
 import { v4 as uuidv4 } from 'uuid';
@@ -8,10 +8,27 @@ import { storage, database } from '../../firebase/firebase';
 
 function UploadVideo({ loading, setLoading, user }) {
     const classes = useStyles();
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
+    const [open, setOpen] = useState(false);
+    const [file, setFile] = useState(null);
+    const [caption, setCaption] = useState('');
     const types = ['video/mp4', 'video/webm', 'video/ogg'];
 
-    const handleUpload = (e) => {
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setFile(null);
+    };
+
+    const handlePostUpload = () => {
+        setOpen(false);
+        setDataInFirebase();
+    }
+
+    const handleFileUpload = (e) => {
         const file = e?.target?.files[0];
         // console.log(file);
         if (!file) {
@@ -32,6 +49,11 @@ function UploadVideo({ loading, setLoading, user }) {
             return;
         }
 
+        setFile(file);
+        handleOpen();
+    }
+
+    const setDataInFirebase = () => {
         setLoading(true);
         // randomly generated string to be assigned as postID
         const id = uuidv4();
@@ -62,6 +84,7 @@ function UploadVideo({ loading, setLoading, user }) {
                     userName: user?.username,
                     userID: user?.userID,
                     userProfile: user?.profileURL,
+                    caption: caption,
                     createdAt: database.getCurrentTimeStamp(),
                 }
 
@@ -87,6 +110,47 @@ function UploadVideo({ loading, setLoading, user }) {
 
     return (
         <>
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={open}>
+                    <div className={classes.paper}>
+                        <h2
+                            style={{
+                                fontFamily: "Quicksand, sans-serif",
+                            }} >Caption</h2>
+                        <div>
+                            <TextField
+                                id="outlined-basic"
+                                label="Description"
+                                variant="outlined"
+                                type="text"
+                                fullWidth
+                                color="secondary"
+                                style={{ marginBottom: "2rem" }}
+                                value={caption}
+                                onChange={(e) => setCaption(e.target.value)} />
+                        </div>
+                        <Button
+                            id="smash_btn"
+                            variant="outlined"
+                            color="secondary"
+                            onClick={handlePostUpload}
+                        >
+                            Post
+                        </Button>
+                    </div>
+                </Fade>
+            </Modal>
             {
                 error != null ? <Alert severity="error">{error}</Alert> :
                     <>
@@ -94,7 +158,7 @@ function UploadVideo({ loading, setLoading, user }) {
                             color="primary"
                             type="file"
                             accept="file"
-                            onChange={handleUpload}
+                            onChange={handleFileUpload}
                             id="icon-button-file"
                             className={classes.input}
                             disabled={loading}

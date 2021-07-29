@@ -12,7 +12,7 @@ export const useStyles = makeStyles({
         backgroundColor: "rgba(var(--b3f,250,250,250),1)"
     },
     card: {
-        height: "20rem",
+        height: "23rem",
         width: "15rem",
         position: "absolute",
         top: "50%",
