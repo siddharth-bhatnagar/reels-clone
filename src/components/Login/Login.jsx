@@ -42,12 +42,12 @@ function Login() {
 
     return (
         <div>
-            <Grid container spacing={4} className={classes.mainContainer}>
+            <Grid container spacing={4} className={classes.da}>
                 <Hidden xsDown smDown mdDown>
                     <Grid item xs="auto" sm="auto" md="auto" lg={5}>
-                        <div className={classes.leftMediaDiv}>
+                        <div className={classes.daa}>
                             <CardMedia
-                                className={classes.leftMediaContainer}
+                                className={classes.daaa}
                                 image="https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png"
                             >
                                 <Carousel
@@ -57,25 +57,25 @@ function Login() {
                                     navButtonsAlwaysInvisible={true}
                                     autoPlay
                                     interval="5000"
-                                    className={classes.carousel}
+                                    className={classes.ca}
                                 >
                                     <img
-                                        className={classes.carouselImage}
+                                        className={classes.cai}
                                         src="https://www.instagram.com/static/images/homepage/screenshot1.jpg/d6bf0c928b5a.jpg"
                                         alt=""
                                     />
                                     <img
-                                        className={classes.carouselImage}
+                                        className={classes.cai}
                                         src="https://www.instagram.com/static/images/homepage/screenshot2.jpg/6f03eb85463c.jpg"
                                         alt=""
                                     />
                                     <img
-                                        className={classes.carouselImage}
+                                        className={classes.cai}
                                         src="https://www.instagram.com/static/images/homepage/screenshot4.jpg/842fe5699220.jpg"
                                         alt=""
                                     />
                                     <img
-                                        className={classes.carouselImage}
+                                        className={classes.cai}
                                         src="https://www.instagram.com/static/images/homepage/screenshot5.jpg/0a2d3016f375.jpg"
                                         alt=""
                                     />
@@ -85,11 +85,11 @@ function Login() {
                     </Grid>
                 </Hidden>
                 <Grid item xs={12} sm={6} md={5} lg={4}>
-                    <Card variant="outlined" className={classes.card}>
+                    <Card variant="outlined" className={classes.carda}>
                         {loading ? <LinearProgress /> : <></>}
                         <CardMedia
                             image="https://www.logo.wine/a/logo/Instagram/Instagram-Wordmark-Black-Logo.wine.svg"
-                            className={classes.cardLogo}
+                            className={classes.cardLogoo}
                         />
                         <Grid container spacing={3}>
                             <form>
@@ -98,7 +98,7 @@ function Login() {
                                     InputLabelProps={{ style: { fontSize: 18 } }}
                                     inputProps={{ style: { fontSize: 18 } }}
                                     fullWidth={true}
-                                    className={classes.textField}
+                                    className={classes.tf}
                                     variant="outlined"
                                     size="small"
                                     value={email}
@@ -112,7 +112,7 @@ function Login() {
                                     InputLabelProps={{ style: { fontSize: 18 } }}
                                     inputProps={{ style: { fontSize: 18 } }}
                                     fullWidth={true}
-                                    className={classes.textField}
+                                    className={classes.tf}
                                     variant="outlined"
                                     size="small"
                                     value={password}
@@ -122,7 +122,7 @@ function Login() {
                                 />
 
                                 <Button
-                                    className={classes.btn}
+                                    className={classes.bbbbbbbbbtn}
                                     disabled={loading}
                                     color="primary"
                                     size="small"

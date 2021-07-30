@@ -4,7 +4,7 @@ import Signup from './components/Signup/Signup';
 import Feed from './components/Feed/Feed';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Profile from './components/Profile/Profile';
 import './styles/App.css';
 

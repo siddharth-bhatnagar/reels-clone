@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles((theme) => ({
     mainContainer: {
         height: "100vh",
         width: "75vw",
@@ -60,4 +60,4 @@ export const useStyles = makeStyles({
         fontSize: "16px",
         margin: "auto"
     }
-});
+}));

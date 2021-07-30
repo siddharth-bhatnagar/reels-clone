@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles({
-    mainContainer: {
+export const useStyles = makeStyles((theme) => ({
+    da: {
         height: "100vh",
         width: "75vw",
         display: "flex",
@@ -11,19 +11,19 @@ export const useStyles = makeStyles({
         margin: "auto",
         backgroundColor: "rgba(var(--b3f,250,250,250),1)"
     },
-    leftMediaDiv: {
+    daa: {
         position: "relative",
     },
-    leftMediaContainer: {
+    daaa: {
         height: "618px",
         width: "454px",
         display: "flex"
     },
-    carousel: {
+    ca: {
         position: "relative",
         left: "150.5px"
     },
-    carouselImage: {
+    cai: {
         height: "427px",
         width: "240px",
         position: "relative",
@@ -31,17 +31,17 @@ export const useStyles = makeStyles({
         padding: 0,
         zIndex: "3"
     },
-    card: {
+    carda: {
         height: "15rem",
         width: "15rem",
         margin: "0.5rem"
     },
-    cardLogo: {
+    cardLogoo: {
         height: "100px",
         width: "250px",
         margin: "auto"
     },
-    textField: {
+    tf: {
         "& input::placeholder": {
             fontSize: "16px"
         },
@@ -52,7 +52,7 @@ export const useStyles = makeStyles({
         width: "312px",
         background: "rgba(var(--b3f,250,250,250),1)"
     },
-    btn: {
+    bbbbbbbbbtn: {
         backgroundColor: "#0095F6",
         margin: "0.3rem",
         marginLeft: "1.5rem",
@@ -62,4 +62,4 @@ export const useStyles = makeStyles({
         textTransform: "none",
         fontSize: "16px"
     }
-});
+}));

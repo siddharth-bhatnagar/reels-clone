@@ -9,6 +9,7 @@ import AddComments from '../AddComments/AddComments';
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 import { Alert } from '@material-ui/lab';
 import Comments from '../Comments/Comments';
+import './scroll.css';
 
 function Posts({ user = null }) {
 
@@ -125,10 +126,12 @@ function Posts({ user = null }) {
                                                                             src={post?.userProfile}
                                                                         />
                                                                     }
+                                                        
+                                                                    className='scroll ha'
                                                                     title={<><div style={{ fontWeight: "bold", color: "#444" }}>{post?.userName}</div><Typography variant="body2" color="textSecondary">{post?.caption}</Typography></>}
                                                                 />
                                                                 <Divider />
-                                                                <Comments post={post} posts={posts} user={user} />
+                                                                <Comments className='scroll' post={post} posts={posts} user={user} />
                                                                 <Divider />
                                                                 <AddComments post={post} user={user} setError={setError} loading={loading} setLoading={setLoading} />
                                                             </Card>

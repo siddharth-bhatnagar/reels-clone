@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles((theme) => ({
     imageSection: {
         display: "flex",
         justifyContent: "center",
@@ -54,4 +54,4 @@ export const useStyles = makeStyles({
         top: "50%",
         left: "50%"
     }
-})
+}));
