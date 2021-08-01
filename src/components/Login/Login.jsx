@@ -43,7 +43,7 @@ function Login() {
     return (
         <div>
             <Grid container spacing={4} className={classes.mainContainer}>
-                <Hidden xsDown smDown mdDown>
+                <Hidden xsDown smDown mdDown lgDown>
                     <Grid item xs="auto" sm="auto" md="auto" lg={5}>
                         <div className={classes.leftMediaDiv}>
                             <CardMedia
@@ -97,7 +97,7 @@ function Login() {
                                 <TextField
                                     InputLabelProps={{ style: { fontSize: 18 } }}
                                     inputProps={{ style: { fontSize: 18 } }}
-                                    fullWidth={true}
+                                    // fullWidth={true}
                                     className={classes.textField}
                                     variant="outlined"
                                     size="small"
@@ -111,7 +111,7 @@ function Login() {
                                 <TextField
                                     InputLabelProps={{ style: { fontSize: 18 } }}
                                     inputProps={{ style: { fontSize: 18 } }}
-                                    fullWidth={true}
+                                    // fullWidth={true}
                                     className={classes.textField}
                                     variant="outlined"
                                     size="small"
@@ -145,12 +145,12 @@ function Login() {
                     </Card>
                     <Card
                         variant="outlined"
-                        style={{ marginTop: "2rem", width: "15rem", margin: "0.5rem" }}
+                        style={{ marginTop: "2%", margin: "2%" }}
                     >
                         {error ? <Alert severity="error">{error}</Alert> :
 
                             <Typography
-                                style={{ textAlign: "center", padding: "1rem", fontSize: "14px", color: "#262626" }}
+                                style={{ textAlign: "center", padding: "8%", fontSize: "14px", color: "#262626" }}
                                 variant="body1"
                                 gutterBottom>
                                 Don't have an account?

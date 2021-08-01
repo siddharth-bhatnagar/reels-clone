@@ -32,33 +32,29 @@ export const useStyles = makeStyles({
         zIndex: "3"
     },
     card: {
-        height: "15rem",
-        width: "15rem",
-        margin: "0.5rem"
+        height: "50vh",
+        // width: "85%",
+        margin: "2%"
     },
     cardLogo: {
-        height: "100px",
-        width: "250px",
+        height: "40%",
+        width: "80%",
         margin: "auto"
     },
     textField: {
         "& input::placeholder": {
             fontSize: "16px"
         },
-        margin: "0.3rem",
-        marginLeft: "1.5rem",
-        marginRight: "1.5rem",
-        height: "40px",
-        width: "312px",
+        margin: "1.5%",
+        marginLeft: "9%",
+        width: "82%",
         background: "rgba(var(--b3f,250,250,250),1)"
     },
     btn: {
         backgroundColor: "#0095F6",
-        margin: "0.3rem",
-        marginLeft: "1.5rem",
-        marginRight: "1.5rem",
-        width: "312px",
-        height: "35px",
+        margin: "1.5%",
+        marginLeft: "9%",
+        width: "82%",
         textTransform: "none",
         fontSize: "16px"
     }
