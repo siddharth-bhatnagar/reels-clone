@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles((theme) => ({
     mainContainer: {
         height: "100%",
         width: "100%",
@@ -17,7 +17,7 @@ export const useStyles = makeStyles({
         // scrollbarWidth: "none"
     },
     likeStat: {
-        fontSize: "16px",
+        fontSize: "18px",
         fontWeight: "bold",
     },
     modal: {
@@ -45,4 +45,4 @@ export const useStyles = makeStyles({
         borderTopLeftRadius: "0",
         borderBottomLeftRadius: "0",
     },
-});
+}));

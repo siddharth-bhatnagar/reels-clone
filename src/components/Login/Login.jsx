@@ -44,7 +44,7 @@ function Login() {
         <div>
             <Grid container spacing={4} className={classes.mainContainer}>
                 <Hidden xsDown smDown mdDown lgDown>
-                    <Grid item xs="auto" sm="auto" md="auto" lg={5}>
+                    <Grid item xs={12} sm={12} md={12} lg={5}>
                         <div className={classes.leftMediaDiv}>
                             <CardMedia
                                 className={classes.leftMediaContainer}
@@ -84,7 +84,7 @@ function Login() {
                         </div>
                     </Grid>
                 </Hidden>
-                <Grid item xs={12} sm={6} md={5} lg={4}>
+                <Grid item xs={12} sm={8} md={6} lg={4}>
                     <Card variant="outlined" className={classes.card}>
                         {loading ? <LinearProgress /> : <></>}
                         <CardMedia
@@ -92,46 +92,62 @@ function Login() {
                             className={classes.cardLogo}
                         />
                         <Grid container spacing={3}>
-                            <form>
+                            <div>
+                                <form style={{ width: "100%" }}>
+                                    <TextField
+                                        InputLabelProps={{ style: { fontSize: 18 } }}
+                                        inputProps={{ style: { fontSize: 18 } }}
+                                        // fullWidth={true}
+                                        className={classes.textField}
+                                        variant="outlined"
+                                        size="small"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        type="email"
+                                        label="Email"
+                                        placeholder="johndoe@example.com"
+                                        style={{
+                                            margin: "1.5%",
+                                            marginLeft: "9%",
+                                        }}
+                                    />
 
-                                <TextField
-                                    InputLabelProps={{ style: { fontSize: 18 } }}
-                                    inputProps={{ style: { fontSize: 18 } }}
-                                    // fullWidth={true}
-                                    className={classes.textField}
-                                    variant="outlined"
-                                    size="small"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    type="email"
-                                    label="Email"
-                                    placeholder="johndoe@example.com"
-                                />
+                                    <TextField
+                                        InputLabelProps={{ style: { fontSize: 18 } }}
+                                        inputProps={{ style: { fontSize: 18 } }}
+                                        // fullWidth={true}
+                                        className={classes.textField}
+                                        variant="outlined"
+                                        size="small"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        type="password"
+                                        label="Password"
+                                        style={{
+                                            margin: "1.5%",
+                                            marginLeft: "9%"
+                                        }}
+                                    />
 
-                                <TextField
-                                    InputLabelProps={{ style: { fontSize: 18 } }}
-                                    inputProps={{ style: { fontSize: 18 } }}
-                                    // fullWidth={true}
-                                    className={classes.textField}
-                                    variant="outlined"
-                                    size="small"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    type="password"
-                                    label="Password"
-                                />
-
-                                <Button
-                                    className={classes.btn}
-                                    disabled={loading}
-                                    color="primary"
-                                    size="small"
-                                    variant="contained"
-                                    onClick={handleSubmit}
-                                >
-                                    Log In
-                                </Button>
-                            </form>
+                                    <Button
+                                        disabled={loading}
+                                        color="primary"
+                                        size="small"
+                                        variant="contained"
+                                        onClick={handleSubmit}
+                                        style={{
+                                            margin: "1.5%",
+                                            marginLeft: "9%",
+                                            backgroundColor: "#0095F6",
+                                            width: "82%",
+                                            textTransform: "none",
+                                            fontSize: "16px"
+                                        }}
+                                    >
+                                        Log In
+                                    </Button>
+                                </form>
+                            </div>
                             <Grid item xs={12} sm={12} md={12} lg={12} >
                                 <Typography
                                     style={{ textAlign: "center", fontSize: "14px", marginTop: "10px", color: "#00376B" }}
@@ -145,7 +161,11 @@ function Login() {
                     </Card>
                     <Card
                         variant="outlined"
-                        style={{ marginTop: "2%", margin: "2%" }}
+                        style={{
+                            marginTop: "2%", width: "85%", '@media (maxWidth: 1000px)': {
+                                width: '100%'
+                            }, margin: "2%"
+                        }}
                     >
                         {error ? <Alert severity="error">{error}</Alert> :
 

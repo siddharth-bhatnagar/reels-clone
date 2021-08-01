@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core";
 export const useStyles = makeStyles({
     mainContainer: {
         height: "100vh",
-        width: "75vw",
+        width: "80%",
         display: "flex",
         flexDirection: "row",
         justifyContent: "center",
@@ -21,10 +21,11 @@ export const useStyles = makeStyles({
     },
     carousel: {
         position: "relative",
-        left: "150.5px"
+        left: "150.5px",
+        height: "600px"
     },
     carouselImage: {
-        height: "427px",
+        height: "100%",
         width: "240px",
         position: "relative",
         top: "100px",
@@ -33,29 +34,27 @@ export const useStyles = makeStyles({
     },
     card: {
         height: "50vh",
-        // width: "85%",
-        margin: "2%"
+        width: "85%",
+        // display: "flex",
+        // flexDirection: "column",
+        // justifyContent: "center",
+        // alignItems: "center",
+        margin: "2%",
+        '@media (maxWidth: 1000px)': {
+            width: '100%'
+        }
     },
     cardLogo: {
-        height: "40%",
-        width: "80%",
-        margin: "auto"
+        height: "30%",
+        width: "70%",
+        margin: "5%",
+        marginLeft: "15%"
     },
     textField: {
         "& input::placeholder": {
             fontSize: "16px"
         },
-        margin: "1.5%",
-        marginLeft: "9%",
         width: "82%",
         background: "rgba(var(--b3f,250,250,250),1)"
-    },
-    btn: {
-        backgroundColor: "#0095F6",
-        margin: "1.5%",
-        marginLeft: "9%",
-        width: "82%",
-        textTransform: "none",
-        fontSize: "16px"
     }
 });

@@ -35,6 +35,7 @@ function Header({ loading, setLoading, user }) {
         <>
             <AppBar className={classes.appBar} position="fixed">
                 {loading ? <LinearProgress color="secondary" /> : <></>}
+                {loading ? <LinearProgress color="secondary" /> : <></>}
                 <Toolbar className={classes.toolBar}>
                     <Hidden xsDown>
                         <img height="100%" width="200vw" src="https://www.logo.wine/a/logo/Instagram/Instagram-Wordmark-Black-Logo.wine.svg" alt="" />

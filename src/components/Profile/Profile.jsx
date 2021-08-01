@@ -84,11 +84,10 @@ function Profile() {
                         // <h1>Hello</h1>
                         videos.map((videoObj) => {
                             return (
-                                <div className={classes.videoContainer}>
+                                <div className={classes.videoContainer} key={videoObj.puid}>
                                     <Video
                                         src={videoObj.videoUrl}
                                         id={videoObj.puid}
-                                        key={videoObj.puid}
                                     ></Video>
                                     <div className={classes.overlayContainer}
                                         onMouseOver={(e) => e.currentTarget.style.opacity = "1"}

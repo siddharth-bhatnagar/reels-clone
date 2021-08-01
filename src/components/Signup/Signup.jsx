@@ -99,7 +99,7 @@ function Signup() {
             {loading ? <LinearProgress /> : <></>}
             {error ? <Alert severity="error">{error}</Alert> : <></>}
             <Grid container spacing={4} className={classes.mainContainer}>
-                <Grid item xs={12} sm={12} md={12} lg={12}>
+                <Grid item xs={10} sm={6} md={5} lg={3}>
 
                     <div style={{ position: "relative" }}>
                         <Card variant="outlined" className={classes.card}>
@@ -107,6 +107,7 @@ function Signup() {
                             <CardMedia
                                 image="https://www.logo.wine/a/logo/Instagram/Instagram-Wordmark-Black-Logo.wine.svg"
                                 className={classes.cardLogo}
+                                style={{marginTop: "4%"}}
                             />
                             <Grid container spacing={3}>
                                 <Typography
@@ -192,6 +193,7 @@ function Signup() {
                                         size="small"
                                         variant="contained"
                                         onClick={handleSubmit}
+                                        style={{ marginBottom: "5%" }}
                                     >
                                         Sign Up
                                     </Button>
@@ -202,12 +204,14 @@ function Signup() {
                                     variant="body1"
                                     gutterBottom
                                     size="small"
+                                    style={{
+                                        marginBottom: "15%"
+                                    }}
                                 >
                                     Have an account?
                                     <LinkButton content=" Log In" routeLink="/login" />
                                 </Typography>
                             </Grid>
-
                         </Card>
                     </div>
                 </Grid>
